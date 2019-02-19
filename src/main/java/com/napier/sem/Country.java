@@ -1,6 +1,6 @@
 package com.napier.sem;
 
-public class country {
+public class Country {
     /**
      * Country Code
      */

@@ -1,6 +1,7 @@
 package com.napier.sem;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class App {
     public static void main(String[] args)
@@ -8,8 +9,18 @@ public class App {
         // Create new Application
         App a = new App();
 
+        System.out.println("hello");
         // Connect to database
         a.connect();
+
+//        Country mycountry = a.getcountry();
+
+        ArrayList<Country> countries  = a.getCountries();
+        System.out.println(countries.size());
+        for(Country c : countries){
+            a.displaycountry(c);
+        }
+
 
         // Disconnect from database
         a.disconnect();
@@ -37,8 +48,7 @@ public class App {
             for (int i = 0; i < retries; ++i) {
                 System.out.println("Connecting to database...");
                 try {
-                    // Wait a bit for db to start
-                    Thread.sleep(30000);
+
                     // Connect to database
                     con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
                     System.out.println("Successfully connected");
@@ -46,10 +56,15 @@ public class App {
                 } catch (SQLException sqle) {
                     System.out.println("Failed to connect to database attempt " + Integer.toString(i));
                     System.out.println(sqle.getMessage());
+                }
+                try {
+                    // Wait a bit for db to start
+                    Thread.sleep(30000);
                 } catch (InterruptedException ie) {
-                    System.out.println("Thread interrupted? Should not happen.");
+                        System.out.println("Thread interrupted? Should not happen.");
                 }
             }
+
         }
 
         /**
@@ -66,7 +81,45 @@ public class App {
                 }
             }
         }
-    public city getcity(int ID)
+
+    public ArrayList<Country> getCountries()
+    {
+        ArrayList<Country> result = new ArrayList<>();
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT Name, Population "
+                            + "FROM country "
+                            + "ORDER BY Population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Return name if valid.
+            // Check one is returned
+            while(rset.next())
+            {
+                Country name = new Country();
+                /**name.ID = rset.getInt("ID");*/
+                name.Name = rset.getString("Name");
+                name.Population = rset.getInt("Population");
+                result.add(name);
+
+            }
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get Country details");
+            return null;
+        }
+
+        return result;
+    }
+
+    public Country getcountry()
     {
         try
         {
@@ -74,17 +127,19 @@ public class App {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT Name "
-                            + "FROM city ";
+                    "SELECT Name, Population "
+                            + "FROM country "
+                            + "ORDER BY Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Return name if valid.
             // Check one is returned
             if (rset.next())
             {
-                city name = new city();
-                name.ID = rset.getInt("ID");
+                Country name = new Country();
+                /**name.ID = rset.getInt("ID");*/
                 name.Name = rset.getString("Name");
+                name.Population = rset.getInt("Population");
                 return name;
             }
             else
@@ -93,10 +148,23 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get city details");
+            System.out.println("Failed to get Country details");
             return null;
         }
     }
+
+
+
+    public void displaycountry(Country name)
+    {
+        if (name != null)
+        {
+            System.out.println(
+                    name.Name + " "
+                            + name.Population);
+        }
+    }
+
 
 
 }
