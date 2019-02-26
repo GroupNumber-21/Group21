@@ -1,30 +1,54 @@
-USE CASE: 
-CHARACTERISTIC INFORMATION
-Goal in Context
-a longer statement of the goal, if needed
-Scope
-what system is considered black-box under design
-Level
-one of: Summary, Primary task, subfunction
-Preconditions
-what we expect is already the state of the world
-Success End Condition
-the state of the world upon successful completion
-Failed End Condition
-the state of the world if goal abandoned
-Primary Actor
-a role name for the primary actor, or description
-Trigger
-the action upon the system that starts the use case, may be a time event
-MAIN SUCCESS SCENARIO
-put here the steps of the scenario from trigger to goal delivery, and any cleanup after
-action description
-EXTENSIONS
-put here the extensions, one at a time, each referring to the step of the main scenario
-Condition: action of sub use case
-SUB-VARIATIONS
-*put here the sub-variations that will cause eventual branching in the scenario
-list of sub-variations
-SCHEDULE
-DUE DATE: date or release of deployment
-any other schedule/staffing information you need
+# USE CASE: 18: Produce a population report that has all the countries in the world in descending order
+
+## CHARACTERISTIC INFORMATION
+
+### Goal in Context
+
+*As an Employee, I want to produce a report that has all the countries in the world organised by largest population to smallest so that I can support my organisation in population information.*
+
+### Scope
+
+*Organisation.*
+
+### Level
+
+*Primary task.*
+
+### Preconditions
+
+*We expect that the current database contains all the information needed to execute the queries.*
+
+### Success End Condition
+
+*A table of data correlating to the query will be displayed.*
+
+### Failed End Condition
+
+*Pre-determined error message will be displayed to the user.*
+
+### Primary Actor
+
+*Employee/User*
+
+### Trigger
+
+*The Employee/User requests a specific report*
+
+## MAIN SUCCESS SCENARIO
+
+1. The organisation requests specific information to be produced as a report.
+2. The employee/user queries the database for the data.
+3. The system returns the correct information needed.
+4. The report is produced as required.
+
+## EXTENSIONS
+
+*None*
+
+## SUB-VARIATIONS
+
+*None*
+
+## SCHEDULE
+
+**DUE DATE**: *Release 1.0*
