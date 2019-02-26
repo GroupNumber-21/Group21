@@ -100,11 +100,11 @@ public class App {
             // Check one is returned
             while(rset.next())
             {
-                Country name = new Country();
+                Country country = new Country();
                 /**name.ID = rset.getInt("ID");*/
-                name.Name = rset.getString("Name");
-                name.Population = rset.getInt("Population");
-                result.add(name);
+                country.Name = rset.getString("Name");
+                country.Population = rset.getInt("Population");
+                result.add(country);
 
             }
 
@@ -136,11 +136,11 @@ public class App {
             // Check one is returned
             if (rset.next())
             {
-                Country name = new Country();
+                Country country = new Country();
                 /**name.ID = rset.getInt("ID");*/
-                name.Name = rset.getString("Name");
-                name.Population = rset.getInt("Population");
-                return name;
+                country.Name = rset.getString("Name");
+                country.Population = rset.getInt("Population");
+                return country;
             }
             else
                 return null;
