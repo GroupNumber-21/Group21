@@ -154,6 +154,7 @@ public class App {
     public void displaycountry(Country name)
     {
         if (name != null)
+
         {
             System.out.println(
                     name.Name + " "
@@ -167,7 +168,11 @@ public class App {
             return;
 
         System.out.println(countries.size());
-        for(Country c : countries){
+        for(Country c : countries)
+        {
+            if (c == null)
+                continue;
+
             a.displaycountry(c);
         }
     }
