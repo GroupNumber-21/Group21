@@ -51,7 +51,7 @@ public class App {
                 try {
 
                     // Connect to database
-                    con = DriverManager.getConnection("jdbc:mysql://" + location +"/Country?allowPublicKeyRetrieval=true&useSSL=false", "root", "example");
+                    con = DriverManager.getConnection("jdbc:mysql://" + location +"/world?allowPublicKeyRetrieval=true&useSSL=false", "root", "example");
                     System.out.println("Successfully connected");
                     break;
                 } catch (SQLException sqle) {
