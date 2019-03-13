@@ -4,7 +4,7 @@ public class Country {
     /**
      * Country Code
      */
-    public Integer Code;
+    public String Code;
 
     /**
      * Country Name
@@ -14,7 +14,7 @@ public class Country {
     /**
      * Country Continent
      */
-    public Enum  Continent;
+    public String  Continent;
 
     /**
      * Country Region
