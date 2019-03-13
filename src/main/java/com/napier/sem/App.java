@@ -13,7 +13,12 @@ public class App {
 
         System.out.println("hello");
         // Connect to database
-        a.connect("localhost:33060");
+        if (args.length <1) {
+            a.connect("localhost:33060");
+        }
+        else {
+            a.connect(args[0]);
+        }
 
         ArrayList<Country> countries  = a.getCountries();
         a.printCountries(countries);
