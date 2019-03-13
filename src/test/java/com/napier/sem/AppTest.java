@@ -1,5 +1,6 @@
 package com.napier.sem;
 
+import com.sun.org.apache.bcel.internal.classfile.Code;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -19,15 +20,35 @@ public class AppTest
     }
 
     @Test
-    void printCountriesTestNull()
+    void displayCountriesTestNull()
     {
         app.printCountries(null);
     }
 
     @Test
-    void displayCountriesTestNull()
+    void printCountriesTestEmpty()
     {
-        app.displaycountry(null);
+        ArrayList<Country> countries  = new ArrayList<Country>();
+        app.printCountries(countries);
     }
 
+    @Test
+    void printCountriesTestContainsNull()
+    {
+        ArrayList<Country> countries  = new ArrayList<Country>();
+        countries.add(null);
+        app.printCountries(countries);
+    }
+
+    @Test
+    void printCountryTestContainsNull()
+    {
+        ArrayList<Country> countries  = new ArrayList<Country>();
+        Country myCountry = new Country();
+        myCountry.Code = "ABW";
+        myCountry.Name = "Aruba";
+        myCountry.Continent = "North America";
+        myCountry.Region = "Caribbean";
+        app.printCountries(countries);
+    }
 }
