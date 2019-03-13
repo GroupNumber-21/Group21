@@ -4,23 +4,19 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class App {
+
+    static App a;
     public static void main(String[] args)
     {
         // Create new Application
-        App a = new App();
+        a = new App();
 
         System.out.println("hello");
         // Connect to database
         a.connect();
 
-//        Country mycountry = a.getcountry();
-
         ArrayList<Country> countries  = a.getCountries();
-        System.out.println(countries.size());
-        for(Country c : countries){
-            a.displaycountry(c);
-        }
-
+        a.printCountries(countries);
 
         // Disconnect from database
         a.disconnect();
@@ -165,6 +161,16 @@ public class App {
         }
     }
 
+    public void printCountries(ArrayList<Country> countries)
+    {
+        if (countries == null)
+            return;
+
+        System.out.println(countries.size());
+        for(Country c : countries){
+            a.displaycountry(c);
+        }
+    }
 
 
 }
