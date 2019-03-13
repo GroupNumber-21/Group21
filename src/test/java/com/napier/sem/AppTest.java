@@ -41,7 +41,7 @@ public class AppTest
     }
 
     @Test
-    void printCountryTestContainsNull()
+    void printCountryTestNonNull()
     {
         ArrayList<Country> countries  = new ArrayList<Country>();
         Country myCountry = new Country();
