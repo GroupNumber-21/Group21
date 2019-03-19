@@ -29,4 +29,19 @@ public class AppIntegrationTest
         myCountry.Region = "Caribbean";
     }
 
+    //@Test
+    void getCitiesTest()
+    {
+        ArrayList<city> cities  = new ArrayList<city>();
+
+    }
+
+    //@Test
+    void getCountrylanguagesTest()
+    {
+        ArrayList<countrylanguage> countrylanguages  = new ArrayList<countrylanguage>();
+        countrylanguage myCountrylanguage = new countrylanguage();
+
+    }
+
 }

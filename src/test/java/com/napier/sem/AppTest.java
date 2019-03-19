@@ -51,4 +51,65 @@ public class AppTest
         myCountry.Region = "Caribbean";
         app.printCountries(countries);
     }
+
+    @Test
+    void displaycityTestNull()
+    {
+        app.printCities(null);
+    }
+
+    @Test
+    void printCitiesTestEmpty()
+    {
+        ArrayList<city> cities  = new ArrayList<>();
+        app.printCities(cities);
+    }
+
+    @Test
+    void printCitiesTestContainsNull()
+    {
+        ArrayList<city> cities  = new ArrayList<>();
+        cities.add(null);
+        app.printCities(cities);
+    }
+
+    @Test
+    void printCitiesTestNonNull()
+    {
+        ArrayList<city> cities  = new ArrayList<city>();
+        city myCity = new city();
+        myCity.Name = "Kabol";
+        app.printCities(cities);
+    }
+
+    @Test
+    void displaycountrylanguageTestNull()
+    {
+        app.printCountrylanguage(null);
+    }
+
+    @Test
+    void printCountrylanguageTestEmpty()
+    {
+        ArrayList<countrylanguage> countrylanguages  = new ArrayList<>();
+        app.printCountrylanguage(countrylanguages);
+    }
+
+    @Test
+    void printCountrylanguageTestContainsNull()
+    {
+        ArrayList<countrylanguage> countrylanguages  = new ArrayList<>();
+        countrylanguages.add(null);
+        app.printCountrylanguage(countrylanguages);
+    }
+
+    @Test
+    void printCountrylanguageTestNonNull()
+    {
+        ArrayList<countrylanguage> countrylanguages  = new ArrayList<countrylanguage>();
+        countrylanguage myCountrylanguage = new countrylanguage();
+        myCountrylanguage.Language = "English";
+        app.printCountrylanguage(countrylanguages);
+    }
+
 }
