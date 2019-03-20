@@ -151,6 +151,7 @@ public class App {
 
             a.displaycountry(c);
         }
+        System.out.println();
     }
 
 

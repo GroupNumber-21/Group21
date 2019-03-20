@@ -20,6 +20,24 @@ public class AppTest
     }
 
     @Test
+    void getCountries()
+    {
+        app.printCountries(null);
+    }
+
+    @Test
+    void getCities()
+    {
+        app.printCities(null);
+    }
+
+    @Test
+    void getCountrylanguages()
+    {
+        app.printCountrylanguage(null);
+    }
+
+    @Test
     void displayCountriesTestNull()
     {
         app.printCountries(null);
