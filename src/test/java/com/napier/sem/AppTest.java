@@ -1,4 +1,4 @@
-package com.napier.sem;
+/**package com.napier.sem;
 
 import com.sun.org.apache.bcel.internal.classfile.Code;
 import org.junit.jupiter.api.BeforeAll;
@@ -130,4 +130,4 @@ public class AppTest
         app.printCountrylanguage(countrylanguages);
     }
 
-}
+} */

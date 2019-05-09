@@ -27,7 +27,7 @@ public class App {
 
         a.query12();
 
-        a.query18();
+        a.query27();
         // Disconnect from database
         a.disconnect();
     }
@@ -271,19 +271,17 @@ public class App {
 
 
 
-    public void query18()
+    public void query27()
     {
-        System.out.println("Query18 - Get all cities in a district ordered by population descending\n");
+        System.out.println("Query27 - Get Country Population in descending order\n");
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
 
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.Name, country.Name, country.Capital, city.Population "
-                            + "FROM city"
-                            + "JOIN country ON country.Code = city.CountryCode"
-                            + "ORDER BY Population DESC";
+                    "SELECT SUM(Population) AS Population "
+                            + "FROM country ";
 
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
@@ -292,28 +290,27 @@ public class App {
             // Check one is returned
             if (resultSet.next())
             {
-                city city = new city();
+                Country country = new Country();
                 /**name.ID = rset.getInt("ID");*/
-                city.Name = resultSet.getString("Name");
-                country.Name = resultSet.getString("Name");
                 country.Population = resultSet.getInt("Population");
                 System.out.println("");
 
                 while(resultSet.next()) {
-                    System.out.println( ", Capital- " + resultSet.getInt("Capital")
-                            + ", Population- " + resultSet.getInt("Population"));
+                    System.out.println(", Population- " + resultSet.getLong("Population"));
                 }
-                System.out.println("Query18 -finished\n");
+                System.out.println("Query27 -finished\n");
             }
+            resultSet.getLong("Population");
         }
 
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get city district details");
+            System.out.println("Failed to get Country details");
 
         }
 
 
     }
+
 }
