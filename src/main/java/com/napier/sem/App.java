@@ -1,7 +1,6 @@
 package com.napier.sem;
 
 import java.sql.*;
-import java.util.ArrayList;
 
 public class App {
 
@@ -20,15 +19,15 @@ public class App {
             a.connect(args[0]);
         }
 
-        ArrayList<Country> countries  = a.getCountries();
-        a.printCountries(countries);
+        a.query3();
 
-        ArrayList<city> cities  = a.getCities();
-        a.printCities(cities);
+        a.query4();
 
-        ArrayList<countrylanguage> countrylanguages = a.getCountrylanguages();
-        a.printCountrylanguage(countrylanguages);
+        a.query8();
 
+        a.query12();
+
+        a.query18();
         // Disconnect from database
         a.disconnect();
     }
@@ -89,201 +88,232 @@ public class App {
         }
     }
 
-    public ArrayList<Country> getCountries()
+    public void query3()
     {
-        ArrayList<Country> result = new ArrayList<>();
-        try
-        {
+        System.out.println("Query3 - Get Country Population in descending order\n");
+        try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
+
             // Create string for SQL statement
             String strSelect =
                     "SELECT Name, Population "
                             + "FROM country "
                             + "ORDER BY Population DESC";
+
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+
             // Return name if valid.
             // Check one is returned
-            while(rset.next())
+            if (resultSet.next())
             {
                 Country country = new Country();
                 /**name.ID = rset.getInt("ID");*/
-                country.Name = rset.getString("Name");
-                country.Population = rset.getInt("Population");
-                result.add(country);
+                country.Name = resultSet.getString("Name");
+                country.Population = resultSet.getInt("Population");
+                System.out.println("");
 
+                while(resultSet.next()) {
+                    System.out.println( ", Name- " + resultSet.getString("Name")
+                            + ", Population- " + resultSet.getInt("Population"));
+                }
+                System.out.println("Query3 -finished\n");
             }
-
         }
+
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get Country details");
-            return null;
+
         }
 
-        return result;
+
     }
 
 
-    public void displaycountry(Country name)
+    public void query4()
     {
-        if (name != null)
-
-        {
-            System.out.println(
-                    name.Name + " "
-                            + name.Population);
-        }
-    }
-
-    public void printCountries(ArrayList<Country> countries)
-    {
-        if (countries == null)
-            return;
-
-        System.out.println(countries.size());
-        for(Country c : countries)
-        {
-            if (c == null)
-                continue;
-
-            a.displaycountry(c);
-        }
-        System.out.println();
-    }
-
-
-
-    public ArrayList<city> getCities()
-    {
-        ArrayList<city> result = new ArrayList<>();
-        try
-        {
+        System.out.println("Query4 - Get Country Population in descending order by region\n");
+        try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT Name, Population, Region "
+                            + "FROM country "
+                            + "ORDER BY Region, Population DESC";
+
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+
+            // Return name if valid.
+            // Check one is returned
+            if (resultSet.next())
+            {
+                Country country = new Country();
+                /**name.ID = rset.getInt("ID");*/
+                country.Name = resultSet.getString("Name");
+                country.Population = resultSet.getInt("Population");
+                country.Region = resultSet.getString("Region");
+                System.out.println("");
+
+                while(resultSet.next()) {
+                    System.out.println( ", Name- " + resultSet.getString("Name")
+                            + ", Population- " + resultSet.getInt("Population")
+                            + ", Region- " + resultSet.getString("Region"));
+                }
+                System.out.println("Query4 -finished\n");
+            }
+        }
+
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get Country details");
+
+        }
+
+
+    }
+
+    public void query8()
+    {
+        System.out.println("Query8 - Get City names ordered by Population in descending order\n");
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
             // Create string for SQL statement
             String strSelect =
                     "SELECT Name, Population "
                             + "FROM city "
                             + "ORDER BY Population DESC";
+
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+
             // Return name if valid.
             // Check one is returned
-            while(rset.next())
+            if (resultSet.next())
             {
                 city city = new city();
                 /**name.ID = rset.getInt("ID");*/
-                city.Name = rset.getString("Name");
-                city.Population = rset.getInt("Population");
-                result.add(city);
+                city.Name = resultSet.getString("Name");
+                city.Population = resultSet.getInt("Population");
+                System.out.println("");
 
+                while(resultSet.next()) {
+                    System.out.println( ", Name- " + resultSet.getString("Name")
+                            + ", Population- " + resultSet.getInt("Population"));
+               }
+                System.out.println("Query8 -finished\n");
             }
-
         }
+
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get city details");
-            return null;
+            System.out.println("Failed to get City details");
+
         }
 
-        return result;
+
     }
 
-
-    public void displaycity(city name)
+    public void query12()
     {
-        if (name != null)
-
-        {
-            System.out.println(
-                    name.Name + " "
-                            + name.Population);
-        }
-    }
-
-    public void printCities(ArrayList<city> cities)
-    {
-        if (cities == null)
-            return;
-
-        System.out.println(cities.size());
-        for(city c : cities)
-        {
-            if (c == null)
-                continue;
-
-            a.displaycity(c);
-        }
-    }
-
-
-    public ArrayList<countrylanguage> getCountrylanguages()
-    {
-        ArrayList<countrylanguage> result = new ArrayList<>();
-        try
-        {
+        System.out.println("Query12 - Get all cities in a district ordered by population descending\n");
+        try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
+
             // Create string for SQL statement
             String strSelect =
-                    "SELECT Language, Percentage "
-                            + "FROM countrylanguage "
-                            + "ORDER BY Percentage DESC";
+                    "SELECT Name, District, Population "
+                            + "FROM city "
+                            + "ORDER BY Population DESC";
+
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+
             // Return name if valid.
             // Check one is returned
-            while(rset.next())
+            if (resultSet.next())
             {
-                countrylanguage countrylanguage = new countrylanguage();
+                city city = new city();
                 /**name.ID = rset.getInt("ID");*/
-                countrylanguage.Language = rset.getString("Language");
-                countrylanguage.Percentage = rset.getFloat("Percentage");
-                result.add(countrylanguage);
+                city.Name = resultSet.getString("Name");
+                city.District = resultSet.getString("District");
+                city.Population = resultSet.getInt("Population");
+                System.out.println("");
 
+                while(resultSet.next()) {
+                    System.out.println( ", Name- " + resultSet.getString("Name")
+                            + ", District- " + resultSet.getString("District")
+                            + ", Population- " + resultSet.getInt("Population"));
+                }
+                System.out.println("Query12 -finished\n");
             }
-
         }
+
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get countrylanguage details");
-            return null;
+            System.out.println("Failed to get city district details");
+
         }
 
-        return result;
+
     }
 
 
-    public void displaycountrylanguage(countrylanguage name)
+
+    public void query18()
     {
-        if (name != null)
+        System.out.println("Query18 - Get all cities in a district ordered by population descending\n");
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
 
-        {
-            System.out.println(
-                    name.Language + " "
-                            + name.Percentage);
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.Name, country.Name, country.Capital, city.Population "
+                            + "FROM city"
+                            + "JOIN country ON country.Code = city.CountryCode"
+                            + "ORDER BY Population DESC";
+
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+
+            // Return name if valid.
+            // Check one is returned
+            if (resultSet.next())
+            {
+                city city = new city();
+                /**name.ID = rset.getInt("ID");*/
+                city.Name = resultSet.getString("Name");
+                country.Name = resultSet.getString("Name");
+                country.Population = resultSet.getInt("Population");
+                System.out.println("");
+
+                while(resultSet.next()) {
+                    System.out.println( ", Capital- " + resultSet.getInt("Capital")
+                            + ", Population- " + resultSet.getInt("Population"));
+                }
+                System.out.println("Query18 -finished\n");
+            }
         }
-    }
 
-    public void printCountrylanguage(ArrayList<countrylanguage> countrylanguages)
-    {
-        if (countrylanguages == null)
-            return;
-
-        System.out.println(countrylanguages.size());
-        for(countrylanguage c : countrylanguages)
+        catch (Exception e)
         {
-            if (c == null)
-                continue;
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city district details");
 
-            a.displaycountrylanguage(c);
         }
+
+
     }
-
-
 }
