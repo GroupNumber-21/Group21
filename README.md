@@ -25,7 +25,7 @@
 | 16 | 18 | The top N populated cities in a district where N is provided by the user. |  |  |
 | 17 | 19 | All the capital cities in the world organised by largest population to smallest. |  |  |
 | 18 | 20 | All the capital cities in a continent organised by largest population to smallest. |  |  |
-| 19 | 21 | All the capital cities in a region organised by largest to smallest. | No |  |
+| 19 | 21 | All the capital cities in a region organised by largest to smallest. |  |  |
 | 20 | 22 | The top N populated capital cities in the world where N is provided by the user. |  |  |
 | 21 | 23 | The top N populated capital cities in a continent where N is provided by the user. |  |  |
 | 22 | 24 | The top N populated capital cities in a region where N is provided by the user. |  |  |
@@ -39,7 +39,7 @@
 | 30 | 32 | The population of a district. |  |  |
 | 31 | 33 | The population of a city. |  | |
 
-|      | Code Review 1 | Code Review 2 | Code Review 3 | Code Review 4 | Final Deliverable | Average |
+| Name | Code Review 1 | Code Review 2 | Code Review 3 | Code Review 4 | Final Deliverable | Average |
 |------|---------------|---------------|---------------|---------------|-------------------|-------|
 | Lauren Anderson | 0.5 | 0.5 | 0.5 | 0.5 | 0.5 | 0.5 |
 | Calum Scott | 0.5 | 0.5 | 0.5 | 0.5 | 0.5 | 0.5 |
