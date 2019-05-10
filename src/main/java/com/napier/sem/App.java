@@ -481,21 +481,23 @@ public class App {
         Scanner scanner = new Scanner(System.in);
         System.out.print( "Enter the amount of countries you would like to see - " );
         int input = scanner.nextInt();
+        scanner.nextLine();
         input += 1;
-        System.out.println( "Enter the country you would like to see - " );
-        String input_country = scanner.nextLine();
+
+        System.out.println( "Enter the continent you would like to see - " );
+        String input_continent = scanner.nextLine();
 
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
 
             // Create string for SQL statement
-            String limit = "LIMIT " + input + " " + input_country + " ";
+            String limit = "LIMIT " + input + " ";
 
             String strSelect =
                     "SELECT Name, Population, Continent "
                             + "FROM country "
-                            + "WHERE Continent = "+ input_country +" "
+                            + "WHERE Continent = \"" + input_continent + "\" "
                             + limit;
 
             // Execute SQL statement
