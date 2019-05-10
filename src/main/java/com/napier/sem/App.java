@@ -27,9 +27,9 @@ public class App {
         a.query10();
         a.query11();
         a.query12();
-        a.query27();
         a.query5();
         a.query6();
+        a.query27();
 
         // Disconnect from database
         a.disconnect();
@@ -455,6 +455,9 @@ public class App {
             // Check one is returned
             if (resultSet.next())
             {
+                System.out.printf("Population- %.0f\n", resultSet.getDouble("Population"));
+
+
                 Country country = new Country();
                 country.Population = resultSet.getInt("Population");
                 System.out.println("");
