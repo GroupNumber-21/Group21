@@ -7,16 +7,16 @@
 
 | ID | Query | Name | Met | Screenshot |
 | --- | --- | --- | --- | --- |
-| 1 | 3 | All the countries in the world organised by largest population to smallest. |  |  |
-| 2 | 4 | All the countries in a continent organised by largest population to smallest. |  |  |
-| 3 | 5 | All the countries in a region organised by largest population to smallest. |  |  |
+| 1 | 3 | All the countries in the world organised by largest population to smallest. | yes |  |
+| 2 | 4 | All the countries in a continent organised by largest population to smallest. | yes |  |
+| 3 | 5 | All the countries in a region organised by largest population to smallest. | yes |  |
 | 4 | 6 | The top N populated countries in the world where N is provided by the user. |  |  |
 | 5 | 7 | The top N populated countries in a continent where N is provided by the user. |  |  |
-| 6 | 8 | The top N populated countries in a region where N is provided by the user. |  |  |
-| 7 | 9 | All the cities in the world organised by largest population to smallest. | |  |
-| 8 | 10 | All the cities in a continent organised by largest population to smallest. |  |  |
-| 9 | 11 | All the cities in a region organised by largest population to smallest. |  |  |
-| 10 | 12 | All the cities in a country organised by largest population to smallest. |  |  |
+| 6 | 8 | The top N populated countries in a region where N is provided by the user. | yes |  |
+| 7 | 9 | All the cities in the world organised by largest population to smallest. | yes |  |
+| 8 | 10 | All the cities in a continent organised by largest population to smallest. | yes |  |
+| 9 | 11 | All the cities in a region organised by largest population to smallest. | yes |  |
+| 10 | 12 | All the cities in a country organised by largest population to smallest. | yes |  |
 | 11 | 13 | All the cities in a district organised by largest population to smallest. |  |  |
 | 12 | 14 | The top N populated cities in the world where N is provided by the user. |  |  |
 | 13 | 15 | The top N populated cities in a continent where N is provided by the user. |  |  |
