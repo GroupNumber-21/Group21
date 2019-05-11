@@ -19,6 +19,7 @@ public class App {
         else {
             a.connect(args[0]);
         }
+        a.query2();
         a.query3();
         a.query4();
         a.query5();
@@ -101,9 +102,9 @@ public class App {
         }
     }
 
-    public void query3()
+    public void query2()
     {
-        System.out.println("Query3 - Get Country Population in descending order\n");
+        System.out.println("Query2 - Get Country Population in descending order\n");
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -129,6 +130,49 @@ public class App {
                     System.out.println( ", Name- " + resultSet.getString("Name")
                             + ", Population- " + resultSet.getInt("Population"));
                 }
+                System.out.println("Query2 -finished\n");
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+
+        }
+
+    }
+
+    public void query3()
+    {
+        System.out.println("Query3 - Get Country Population in descending order by continent\n");
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT Name, Population, Continent "
+                            + "FROM country "
+                            + "ORDER BY Continent, Population DESC";
+
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+
+            // Return name if valid.
+            // Check one is returned
+            if (resultSet.next())
+            {
+                Country country = new Country();
+                country.Name = resultSet.getString("Name");
+                country.Population = resultSet.getInt("Population");
+                country.Continent = resultSet.getString("Continent");
+                System.out.println("");
+
+                while(resultSet.next()) {
+                    System.out.println( ", Name- " + resultSet.getString("Name")
+                            + ", Population- " + resultSet.getInt("Population")
+                            + ", Continent- " + resultSet.getString("Continent"));
+                }
                 System.out.println("Query3 -finished\n");
             }
         }
@@ -140,6 +184,7 @@ public class App {
         }
 
     }
+
 
     public void query4()
     {
