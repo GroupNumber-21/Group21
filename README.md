@@ -41,7 +41,7 @@
 
 | Name | Code Review 1 | Code Review 2 | Code Review 3 | Code Review 4 | Final Deliverable | Average |
 |------|---------------|---------------|---------------|---------------|-------------------|-------|
-| Lauren Anderson | 0.5 | 0.5 | 0.5 | 0.5 | 0.5 | 0.5 |
-| Calum Scott | 0.5 | 0.5 | 0.5 | 0.5 | 0.5 | 0.5 |
-| Aidan Goldie | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 |
-| Gavin Blair | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 |
+| Lauren Anderson | 0.5 | 0.5 | 0.5 | 0.5 | 0.75 | 0.55 |
+| Calum Scott | 0.5 | 0.5 | 0.5 | 0.5 | 0.25 | 0.45 |
+| Aidan Goldie | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.00 |
+| Gavin Blair | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.00 |
