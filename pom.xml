@@ -92,4 +92,11 @@
             </plugin>
         </plugins>
     </build>
+    <distributionManagement>
+        <repository>
+            <id>internal.repo</id>
+            <name>Internal repo</name>
+            <url>file://$H:/Old SEM/sem-group-21/sem/</url>
+        </repository>
+    </distributionManagement>
 </project>
