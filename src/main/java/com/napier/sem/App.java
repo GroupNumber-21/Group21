@@ -19,17 +19,27 @@ public class App {
         else {
             a.connect(args[0]);
         }
-
         a.query3();
         a.query4();
+        a.query5();
+        a.query6();
+        a.query7();
         a.query8();
         a.query9();
         a.query10();
         a.query11();
         a.query12();
-        a.query5();
-        a.query6();
+        a.query13();
+        a.query14();
+        a.query15();
+        a.query16();
+        a.query17();
         a.query27();
+        a.query28();
+        a.query29();
+        a.query30();
+        a.query31();
+        a.query32();
 
         // Disconnect from database
         a.disconnect();
@@ -125,13 +135,11 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get Country details");
+            System.out.println("Failed to get details");
 
         }
 
-
     }
-
 
     public void query4()
     {
@@ -170,10 +178,9 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get Country details");
+            System.out.println("Failed to get details");
 
         }
-
 
     }
 
@@ -217,11 +224,114 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get Country details");
+            System.out.println("Failed to get details");
         }
 
     }
 
+    public void query6()
+    {
+        System.out.println("Query6 - Get the top (user input) populated countries in a continent\n");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print( "Enter the amount of countries you would like to see - " );
+        int input = scanner.nextInt();
+        scanner.nextLine();
+        input += 1;
+
+        System.out.println( "Enter the continent you would like to see - " );
+        String input_continent = scanner.nextLine();
+
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String limit = "LIMIT " + input + " ";
+
+            String strSelect =
+                    "SELECT Name, Population, Continent "
+                            + "FROM country "
+                            + "WHERE Continent = \"" + input_continent + "\" "
+                            + "ORDER BY Population DESC "
+                            + limit;
+
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+
+            if (resultSet.next()) {
+                Country country = new Country();
+                country.Name = resultSet.getString("Name");
+                country.Population = resultSet.getInt("Population");
+                country.Continent = resultSet.getString("Continent");
+                System.out.println("");
+
+                while (resultSet.next()) {
+                    System.out.println(", Continent- " + resultSet.getString( "Continent")
+                            + ", Name- " + resultSet.getString("Name")
+                            + ", Population- " + resultSet.getInt("Population"));
+                }
+                System.out.println("Query6 -finished\n");
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+
+    }
+
+    public void query7()
+    {
+        System.out.println("Query7 - Get the top (user input) populated countries in a region\n");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print( "Enter the amount of countries you would like to see - " );
+        int input = scanner.nextInt();
+        scanner.nextLine();
+        input += 1;
+
+        System.out.println( "Enter the region you would like to see - " );
+        String input_region = scanner.nextLine();
+
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String limit = "LIMIT " + input + " ";
+
+            String strSelect =
+                    "SELECT Name, Population, Region "
+                            + "FROM country "
+                            + "WHERE Region = \"" + input_region + "\" "
+                            + "ORDER BY Population DESC "
+                            + limit;
+
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+
+            if (resultSet.next()) {
+                Country country = new Country();
+                country.Name = resultSet.getString("Name");
+                country.Population = resultSet.getInt("Population");
+                country.Region = resultSet.getString("Region");
+                System.out.println("");
+
+                while (resultSet.next()) {
+                    System.out.println(", Region- " + resultSet.getString( "Region")
+                            + ", Name- " + resultSet.getString("Name")
+                            + ", Population- " + resultSet.getInt("Population"));
+                }
+                System.out.println("Query7 -finished\n");
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+
+    }
 
     public void query8()
     {
@@ -256,7 +366,7 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get City details");
+            System.out.println("Failed to get details");
         }
 
     }
@@ -393,7 +503,6 @@ public class App {
 
     }
 
-
     public void query12()
     {
         System.out.println("Query12 - Get all cities in a district ordered by population descending\n");
@@ -431,58 +540,61 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get city district details");
+            System.out.println("Failed to get details");
         }
 
     }
 
-
-    public void query27()
+    public void query13()
     {
-        System.out.println("Query27 - Get all cities in a country ordered by population descending\n");
+        System.out.println("Query13 - Get the top (user input) populated cities in the world \n");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print( "Enter the amount of cities you would like to see - " );
+        int input = scanner.nextInt();
+        input += 1;
+
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
+
             // Create string for SQL statement
+            String limit = "LIMIT " + input + " ";
+
             String strSelect =
-                    "SELECT SUM(Population) AS Population "
-                            + "FROM country ";
+                    "SELECT Name, Population "
+                            + "FROM city "
+                            + "ORDER BY Population DESC "
+                            + limit;
 
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
 
-            // Return name if valid.
-            // Check one is returned
-            if (resultSet.next())
-            {
-                System.out.printf("Population- %.0f\n", resultSet.getDouble("Population"));
-
-
-                Country country = new Country();
-                country.Population = resultSet.getInt("Population");
+            if (resultSet.next()) {
+                city city = new city();
+                city.Name = resultSet.getString("Name");
+                city.Population = resultSet.getInt("Population");
                 System.out.println("");
 
-                while(resultSet.next()) {
-                    System.out.println(", Population- " + resultSet.getLong("Population"));
+                while (resultSet.next()) {
+                    System.out.println(", Name- " + resultSet.getString("Name")
+                            + ", Population- " + resultSet.getInt("Population"));
                 }
-                System.out.println("Query27 -finished\n");
+                System.out.println("Query13 -finished\n");
             }
-            resultSet.getLong("Population");
         }
-
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get Country details");
+            System.out.println("Failed to get details");
         }
 
     }
 
-    public void query6()
+    public void query14()
     {
-        System.out.println("Query6 - Get the top (user input) populated countries in a continent\n");
+        System.out.println("Query14 - Get the top (user input) populated cities in a continent\n");
         Scanner scanner = new Scanner(System.in);
-        System.out.print( "Enter the amount of countries you would like to see - " );
+        System.out.print( "Enter the amount of cities you would like to see - " );
         int input = scanner.nextInt();
         scanner.nextLine();
         input += 1;
@@ -498,9 +610,11 @@ public class App {
             String limit = "LIMIT " + input + " ";
 
             String strSelect =
-                    "SELECT Name, Population, Continent "
-                            + "FROM country "
+                    "SELECT city.Name, city.Population AS Population, country.Continent "
+                            + "FROM city "
+                            + "JOIN country ON city.CountryCode = country.Code "
                             + "WHERE Continent = \"" + input_continent + "\" "
+                            + "ORDER BY Population DESC "
                             + limit;
 
             // Execute SQL statement
@@ -508,8 +622,9 @@ public class App {
 
             if (resultSet.next()) {
                 Country country = new Country();
-                country.Name = resultSet.getString("Name");
-                country.Population = resultSet.getInt("Population");
+                city city = new city();
+                city.Name = resultSet.getString("Name");
+                city.Population = resultSet.getInt("Population");
                 country.Continent = resultSet.getString("Continent");
                 System.out.println("");
 
@@ -518,16 +633,383 @@ public class App {
                             + ", Name- " + resultSet.getString("Name")
                             + ", Population- " + resultSet.getInt("Population"));
                 }
-                System.out.println("Query6 -finished\n");
+                System.out.println("Query14 -finished\n");
             }
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get Country details");
+            System.out.println("Failed to get details");
         }
 
     }
 
+    public void query15()
+    {
+        System.out.println("Query15 - Get the top (user input) populated cities in a region\n");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print( "Enter the amount of cities you would like to see - " );
+        int input = scanner.nextInt();
+        scanner.nextLine();
+        input += 1;
+
+        System.out.println( "Enter the region you would like to see - " );
+        String input_continent = scanner.nextLine();
+
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String limit = "LIMIT " + input + " ";
+
+            String strSelect =
+                    "SELECT city.Name, city.Population AS Population, country.Region "
+                            + "FROM city "
+                            + "JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE Region = \"" + input_continent + "\" "
+                            + "ORDER BY Population DESC "
+                            + limit;
+
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+
+            if (resultSet.next()) {
+                Country country = new Country();
+                city city = new city();
+                city.Name = resultSet.getString("Name");
+                city.Population = resultSet.getInt("Population");
+                country.Region = resultSet.getString("Region");
+                System.out.println("");
+
+                while (resultSet.next()) {
+                    System.out.println(", Region- " + resultSet.getString( "Region")
+                            + ", Name- " + resultSet.getString("Name")
+                            + ", Population- " + resultSet.getInt("Population"));
+                }
+                System.out.println("Query15 -finished\n");
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+
+    }
+
+    public void query16()
+    {
+        System.out.println("Query16 - Get the top (user input) populated cities in a country\n");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print( "Enter the amount of cities you would like to see - " );
+        int input = scanner.nextInt();
+        scanner.nextLine();
+        input += 1;
+
+        System.out.println( "Enter the country you would like to see - " );
+        String input_country = scanner.nextLine();
+
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String limit = "LIMIT " + input + " ";
+
+            String strSelect =
+                    "SELECT city.Name, city.Population AS Population, country.Name "
+                            + "FROM city "
+                            + "JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE country.Name = \"" + input_country + "\" "
+                            + "ORDER BY Population DESC "
+                            + limit;
+
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+
+            if (resultSet.next()) {
+                Country country = new Country();
+                city city = new city();
+                city.Name = resultSet.getString("city.Name");
+                country.Name = resultSet.getString("country.Name");
+                city.Population = resultSet.getInt("Population");
+                System.out.println("");
+
+                while (resultSet.next()) {
+                    System.out.println(", Country Name- " + resultSet.getString( "country.Name")
+                            + ", City Name- " + resultSet.getString("city.Name")
+                            + ", Population- " + resultSet.getInt("Population"));
+                }
+                System.out.println("Query16 -finished\n");
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+
+    }
+
+    public void query17()
+    {
+        System.out.println("Query16 - Get the top (user input) populated cities in a district\n");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print( "Enter the amount of cities you would like to see - " );
+        int input = scanner.nextInt();
+        scanner.nextLine();
+        input += 1;
+
+        System.out.println( "Enter the district you would like to see - " );
+        String input_district = scanner.nextLine();
+
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String limit = "LIMIT " + input + " ";
+
+            String strSelect =
+                    "SELECT Name, Population AS Population, District "
+                            + "FROM city "
+                            + "WHERE District = \"" + input_district + "\" "
+                            + "ORDER BY Population DESC "
+                            + limit;
+
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+
+            if (resultSet.next()) {
+                city city = new city();
+                city.Name = resultSet.getString("Name");
+                city.District = resultSet.getString("District");
+                city.Population = resultSet.getInt("Population");
+                System.out.println("");
+
+                while (resultSet.next()) {
+                    System.out.println(", District- " + resultSet.getString( "District")
+                            + ", City Name- " + resultSet.getString("Name")
+                            + ", Population- " + resultSet.getInt("Population"));
+                }
+                System.out.println("Query17 -finished\n");
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+
+    }
+
+    public void query27()
+    {
+        System.out.println("Query27 - Get the population of the world\n");
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT SUM(Population) AS Population "
+                            + "FROM country ";
+
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+
+            if (resultSet.next())
+            {
+                System.out.printf("Population- %.0f\n", resultSet.getDouble("Population"));
+                System.out.println("Query27 -finished\n");
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+
+    }
+
+    public void query28()
+    {
+        System.out.println("Query28 - the population of a continent\n");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println( "Enter the continent you would like to see - " );
+        String input_continent = scanner.nextLine();
+
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            String strSelect =
+                    "SELECT SUM(country.Population) AS Population, country.Continent "
+                            + "FROM country "
+                            + "WHERE Continent = \"" + input_continent + "\" " ;
+
+
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+
+            if (resultSet.next())
+            {
+                Country country = new Country();
+                country.Continent = resultSet.getString("Continent");
+                System.out.printf("Population- %.0f\n", resultSet.getDouble("Population"));
+                System.out.println("Query28 -finished\n");
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+
+    }
+
+    public void query29()
+    {
+        System.out.println("Query29 - the population of a region\n");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println( "Enter the region you would like to see - " );
+        String input_Region = scanner.nextLine();
+
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            String strSelect =
+                    "SELECT SUM(country.Population) AS Population, Region "
+                            + "FROM country "
+                            + "WHERE Region = \"" + input_Region + "\" " ;
+
+
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+
+            if (resultSet.next())
+            {
+                Country country = new Country();
+                country.Region = resultSet.getString("Region");
+                System.out.printf("Population- %.0f\n", resultSet.getDouble("Population"));
+                System.out.println("Query29 -finished\n");
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+
+    }
+
+    public void query30()
+    {
+        System.out.println("Query30 - the population of a country\n");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println( "Enter the country you would like to see - " );
+        String input_country = scanner.nextLine();
+
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            String strSelect =
+                    "SELECT Name, Population "
+                            + "FROM country "
+                            + "WHERE Name = \"" + input_country + "\" " ;
+
+
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+
+            if (resultSet.next())
+            {
+                Country country = new Country();
+                country.Name = resultSet.getString("Name");
+                System.out.printf("Population- %.0f\n", resultSet.getDouble("Population"));
+                System.out.println("Query30 -finished\n");
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+
+    }
+
+    public void query31()
+    {
+        System.out.println("Query31 - the population of a district\n");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println( "Enter the district you would like to see - " );
+        String input_district = scanner.nextLine();
+
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            String strSelect =
+                    "SELECT city.District, SUM(Population) AS Population "
+                            + "FROM city "
+                            + "WHERE District = \"" + input_district + "\" " ;
+
+
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+
+            if (resultSet.next())
+            {
+                city city = new city();
+                city.District = resultSet.getString("District");
+                System.out.printf("Population- %.0f\n", resultSet.getDouble("Population"));
+                System.out.println("Query31 -finished\n");
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+
+    }
+
+    public void query32()
+    {
+        System.out.println("Query32 - the population of a city\n");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println( "Enter the city you would like to see - " );
+        String input_city = scanner.nextLine();
+
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            String strSelect =
+                    "SELECT city.Name, Population "
+                            + "FROM city "
+                            + "WHERE Name = \"" + input_city + "\" " ;
+
+
+            // Execute SQL statement
+            ResultSet resultSet = stmt.executeQuery(strSelect);
+
+            if (resultSet.next())
+            {
+                city city = new city();
+                city.Name = resultSet.getString("Name");
+                System.out.printf("Population- %.0f\n", resultSet.getDouble("Population"));
+                System.out.println("Query31 -finished\n");
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get details");
+        }
+
+    }
 
 }
