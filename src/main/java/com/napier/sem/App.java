@@ -104,7 +104,7 @@ public class App {
 
     public void query2()
     {
-        System.out.println("Query2 - Get Country Population in descending order\n");
+        System.out.println("Query2 - All the countries in the world organised by largest population to smallest.\n");
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -144,7 +144,7 @@ public class App {
 
     public void query3()
     {
-        System.out.println("Query3 - Get Country Population in descending order by continent\n");
+        System.out.println("Query3 - All the countries in a continent organised by largest population to smallest.\n");
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -188,7 +188,7 @@ public class App {
 
     public void query4()
     {
-        System.out.println("Query4 - Get Country Population in descending order by region\n");
+        System.out.println("Query4 - All the countries in a region organised by largest population to smallest.\n");
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -231,7 +231,7 @@ public class App {
 
     public void query5()
     {
-        System.out.println("Query5 - Get the top (user input) populated countries in the world \n");
+        System.out.println("Query5 - The top N populated countries in the world where N is provided by the user.\n");
         Scanner scanner = new Scanner(System.in);
         System.out.print( "Enter the amount of countries you would like to see - " );
         int input = scanner.nextInt();
@@ -276,7 +276,7 @@ public class App {
 
     public void query6()
     {
-        System.out.println("Query6 - Get the top (user input) populated countries in a continent\n");
+        System.out.println("Query6 - The top N populated countries in a continent where N is provided by the user.\n");
         Scanner scanner = new Scanner(System.in);
         System.out.print( "Enter the amount of countries you would like to see - " );
         int input = scanner.nextInt();
@@ -328,7 +328,7 @@ public class App {
 
     public void query7()
     {
-        System.out.println("Query7 - Get the top (user input) populated countries in a region\n");
+        System.out.println("Query7 - The top N populated countries in a region where N is provided by the user.\n");
         Scanner scanner = new Scanner(System.in);
         System.out.print( "Enter the amount of countries you would like to see - " );
         int input = scanner.nextInt();
@@ -380,7 +380,7 @@ public class App {
 
     public void query8()
     {
-        System.out.println("Query8 - Get all cities ordered by population in descending order\n");
+        System.out.println("Query8 - All the cities in the world organised by largest population to smallest.\n");
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -418,7 +418,7 @@ public class App {
 
     public void query9()
     {
-        System.out.println("Query9 - Get all the cities in a continent ordered by population descending\n");
+        System.out.println("Query9 - All the cities in a continent organised by largest population to smallest.\n");
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -462,7 +462,7 @@ public class App {
 
     public void query10()
     {
-        System.out.println("Query10 - Get all cities in a region ordered by population descending\n");
+        System.out.println("Query10 - All the cities in a region organised by largest population to smallest.\n");
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -506,7 +506,7 @@ public class App {
 
     public void query11()
     {
-        System.out.println("Query11 - Get all cities in a country ordered by population descending\n");
+        System.out.println("Query11 - All the cities in a country organised by largest population to smallest.\n");
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -550,7 +550,7 @@ public class App {
 
     public void query12()
     {
-        System.out.println("Query12 - Get all cities in a district ordered by population descending\n");
+        System.out.println("Query12 - All the cities in a district organised by largest population to smallest.\n");
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -592,7 +592,7 @@ public class App {
 
     public void query13()
     {
-        System.out.println("Query13 - Get the top (user input) populated cities in the world \n");
+        System.out.println("Query13 - The top N populated cities in the world where N is provided by the user.\n");
         Scanner scanner = new Scanner(System.in);
         System.out.print( "Enter the amount of cities you would like to see - " );
         int input = scanner.nextInt();
@@ -637,7 +637,7 @@ public class App {
 
     public void query14()
     {
-        System.out.println("Query14 - Get the top (user input) populated cities in a continent\n");
+        System.out.println("Query14 - The top N populated cities in a continent where N is provided by the user. \n");
         Scanner scanner = new Scanner(System.in);
         System.out.print( "Enter the amount of cities you would like to see - " );
         int input = scanner.nextInt();
@@ -691,7 +691,7 @@ public class App {
 
     public void query15()
     {
-        System.out.println("Query15 - Get the top (user input) populated cities in a region\n");
+        System.out.println("Query15 - The top N populated cities in a region where N is provided by the user.\n");
         Scanner scanner = new Scanner(System.in);
         System.out.print( "Enter the amount of cities you would like to see - " );
         int input = scanner.nextInt();
@@ -745,7 +745,7 @@ public class App {
 
     public void query16()
     {
-        System.out.println("Query16 - Get the top (user input) populated cities in a country\n");
+        System.out.println("Query16 - The top N populated cities in a country where N is provided by the user.\n");
         Scanner scanner = new Scanner(System.in);
         System.out.print( "Enter the amount of cities you would like to see - " );
         int input = scanner.nextInt();
@@ -799,7 +799,7 @@ public class App {
 
     public void query17()
     {
-        System.out.println("Query16 - Get the top (user input) populated cities in a district\n");
+        System.out.println("Query17 - The top N populated cities in a district where N is provided by the user.\n");
         Scanner scanner = new Scanner(System.in);
         System.out.print( "Enter the amount of cities you would like to see - " );
         int input = scanner.nextInt();
@@ -851,7 +851,7 @@ public class App {
 
     public void query27()
     {
-        System.out.println("Query27 - Get the population of the world\n");
+        System.out.println("Query27 - The population of the world.\n");
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -879,7 +879,7 @@ public class App {
 
     public void query28()
     {
-        System.out.println("Query28 - the population of a continent\n");
+        System.out.println("Query28 - The population of a continent.\n");
         Scanner scanner = new Scanner(System.in);
         System.out.println( "Enter the continent you would like to see - " );
         String input_continent = scanner.nextLine();
@@ -915,7 +915,7 @@ public class App {
 
     public void query29()
     {
-        System.out.println("Query29 - the population of a region\n");
+        System.out.println("Query29 - The population of a region.\n");
         Scanner scanner = new Scanner(System.in);
         System.out.println( "Enter the region you would like to see - " );
         String input_Region = scanner.nextLine();
@@ -951,7 +951,7 @@ public class App {
 
     public void query30()
     {
-        System.out.println("Query30 - the population of a country\n");
+        System.out.println("Query30 - The population of a country.\n");
         Scanner scanner = new Scanner(System.in);
         System.out.println( "Enter the country you would like to see - " );
         String input_country = scanner.nextLine();
@@ -987,7 +987,7 @@ public class App {
 
     public void query31()
     {
-        System.out.println("Query31 - the population of a district\n");
+        System.out.println("Query31 - The population of a district.\n");
         Scanner scanner = new Scanner(System.in);
         System.out.println( "Enter the district you would like to see - " );
         String input_district = scanner.nextLine();
@@ -1023,7 +1023,7 @@ public class App {
 
     public void query32()
     {
-        System.out.println("Query32 - the population of a city\n");
+        System.out.println("Query32 - The population of a city.\n");
         Scanner scanner = new Scanner(System.in);
         System.out.println( "Enter the city you would like to see - " );
         String input_city = scanner.nextLine();
