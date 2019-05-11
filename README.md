@@ -37,7 +37,7 @@
 | 28 | The population of a region. | YES | 30 |
 | 29 | The population of a country. | YES | 31 |
 | 30 | The population of a district. | YES | 32 |
-| 31 | The population of a city. | YES | 33 |
+| 31 | The population of a city. | No | 33 |
 
 | Name | Code Review 1 | Code Review 2 | Code Review 3 | Code Review 4 | Final Deliverable | Average |
 |------|---------------|---------------|---------------|---------------|-------------------|-------|
