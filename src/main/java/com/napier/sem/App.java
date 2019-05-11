@@ -158,8 +158,6 @@ public class App {
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
 
-            // Return name if valid.
-            // Check one is returned
             if (resultSet.next())
             {
                 Country country = new Country();
@@ -202,8 +200,6 @@ public class App {
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
 
-            // Return name if valid.
-            // Check one is returned
             if (resultSet.next())
             {
                 Country country = new Country();
@@ -433,8 +429,6 @@ public class App {
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
 
-            // Return name if valid.
-            // Check one is returned
             if (resultSet.next())
             {
                 Country country = new Country();
@@ -477,8 +471,6 @@ public class App {
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
 
-            // Return name if valid.
-            // Check one is returned
             if (resultSet.next())
             {
                 Country country = new Country();
@@ -521,8 +513,6 @@ public class App {
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
 
-            // Return name if valid.
-            // Check one is returned
             if (resultSet.next())
             {
                 Country country = new Country();
@@ -564,8 +554,6 @@ public class App {
             // Execute SQL statement
             ResultSet resultSet = stmt.executeQuery(strSelect);
 
-            // Return name if valid.
-            // Check one is returned
             if (resultSet.next())
             {
                 city city = new city();
